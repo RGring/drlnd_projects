@@ -9,7 +9,7 @@ The agent can take four discrete actions:
 
 The state space has a size of 37 dimensions.
 
-The task is considered solved, if the agents reaches a score of 13 or more over 100 consecutive episodes.
+The task is considered to be solved, if the agents reaches a score of 13 or more over 100 consecutive episodes.
 
 # Installations
 1. Install Python 3
@@ -33,7 +33,7 @@ For training an agent start train_agent.py with python3 as interpreter. Please s
   * Feel free to modify any hyperparamters.
 
 ## How to apply a trained agent
-For running an already trained agent start the run_agent.py script with python3 interpreter. Pleases set the following variables in the scrip.
+For running an already trained agent start the run_agent.py script with python3 interpreter. Pleases set the following variables in the script.
   * path_to_env: The path to the simulation environment.
   * path_to_save_agent: The path, where the network parameter should be loaded from.
-  * dueling: If you load a dueling network, it need to be set to true and vice versa.
+  * dueling: If you load a dueling network, it need to be set to True and vice versa.

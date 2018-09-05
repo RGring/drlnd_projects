@@ -2,9 +2,9 @@
 To solve the learning task the DQN-algorithm is applied here. It is combination of Q-learning and a deep neural networks as function approximator.
 
 ## Q-Learning
-Q-learning is a reinforcement learning technique, that solves model-free, continuous tasks. The goal is maximize the (discounted) future reward. In traditional approaches we have a so called Q-table that is adapted to the collected experience (*state, action, reward, next state, done*). For each state-action combination a Q-table is saved in the Q-table. In each iteration the Q-value of [*state, action*] is updated.
+Q-learning is a reinforcement learning technique, that solves model-free, continuous tasks. The goal is to maximize the (discounted) future reward. In traditional approaches we have a so called Q-table that is adapted to the collected experience (*state, action, reward, next state, done*). For each state-action combination a Q-table is saved in the Q-table. In each iteration the Q-value of [*state, action*] is updated.
 
-The disadvantages of the traditional approaches, that the Q-table exceeds memory capacities with increasing state and action dimensions. The idea of DQN is approximate the Q-table with a deep neural network.
+The disadvantage of the traditional approach is, that the Q-table exceeds memory capacities with increasing state and action dimensions. The idea of DQN is approximate the Q-table with a deep neural network.
 
 ## DQN Network
 For the Q-table approximation two different network architectures are applied.
@@ -12,7 +12,7 @@ For the Q-table approximation two different network architectures are applied.
 
   *input layer(37) | hidden layer(64) | hidden layer(64) | output layer(4)*
 
-* **Dueling**: As basis the vanilla network is taken. The output layer will be replaced by two streams, that will be later be fused together.
+* **Dueling**: As basis the vanilla network is taken. The output layer will be replaced by two streams, that will be later fused together.
   + Value Stream: *hidden layer(1)*
   + Advantage Stream: *hidden layer(32) | hidden layer(4)*
 
