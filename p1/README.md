@@ -37,3 +37,9 @@ For running an already trained agent start the run_agent.py script with python3 
   * path_to_env: The path to the simulation environment.
   * path_to_save_agent: The path, where the network parameter should be loaded from.
   * dueling: If you load a dueling network, it need to be set to True and vice versa.
+
+## References
+  * Code structure is from the Udacity lesson coding exercise DQN
+  * Dueling Network Architectures for Deep Reinforcement Learning, Wang et. al., 2016
+  * Human-level control through deep reinforcement learning, Deep Mind, 2015
+  * Reinforcement Learning: An Introduction, Francis Bach, 2018
