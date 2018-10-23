@@ -105,3 +105,4 @@ venv.bak/
 
 # idea relevant stuff
 p1/.idea
+p2/.idea*

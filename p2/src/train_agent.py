@@ -76,11 +76,11 @@ def ddpg(n_episodes=800, max_t=1000):
         scores_deque.append(np.mean(score))
         scores.append(np.mean(score))
         print('\rEpisode {}\tAverage Score: {:.2f}\tScore: {:.2f}'.format(i_episode, np.mean(scores_deque), np.mean(score)), end="")
-        if i_episode % 25 == 0:
+        if i_episode % 100 == 0:
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_deque)))
         if (np.mean(scores_deque) > 30):
-            torch.save(agent.actor_local.state_dict(), 'checkpoint_actor.pth')
-            torch.save(agent.critic_local.state_dict(), 'checkpoint_critic.pth')
+            torch.save(agent.actor_local.state_dict(), '%s/actor1_%d_%s.pth' % (path_to_save_model, seed, version))
+            torch.save(agent.critic_local.state_dict(), '%s/critic1_%d_%s.pth' % (path_to_save_model, seed, version))
             break
     torch.save(agent.actor_local.state_dict(), '%s/actor1_%d_%s.pth' % (path_to_save_model, seed, version))
     torch.save(agent.critic_local.state_dict(), '%s/critic1_%d_%s.pth' % (path_to_save_model, seed, version))
