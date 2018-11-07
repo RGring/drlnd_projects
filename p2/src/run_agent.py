@@ -9,6 +9,8 @@ from ddpg_agent import Agent
 
 
 path_to_env = "/home/ronja/MiR/Udacity/deep-reinforcement-learning/p2_continuous-control/Reacher_Linux_single/Reacher.x86_64"
+path_to_env = "//home/ronja/MiR/Udacity/deep-reinforcement-learning/p3_collab-compet/Tennis_Linux/Tennis.x86_64"
+
 path_to_critic = "../saved_models/critic.pth"
 path_to_actor = "../saved_models/actor.pth"
 

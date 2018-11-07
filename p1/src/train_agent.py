@@ -5,12 +5,12 @@ import torch
 import matplotlib.pyplot as plt
 
 
-from dqn_agent import Agent
+from dqn_agent_keras_2 import Agent
 
 
 path_to_env = "/home/ronja/MiR/Udacity/deep-reinforcement-learning/p1_navigation/Banana_Linux/Banana.x86_64"
 path_to_save_model = "../saved_models/dueling.pth"
-dueling = True
+dueling = False
 
 env = UnityEnvironment(file_name=path_to_env,no_graphics=True, seed = 0)
 
@@ -77,7 +77,7 @@ def dqn(n_episodes=2000, max_t=1000, eps_start=0.1, eps_end=0.0001, eps_decay=0.
         scores_window.append(score)  # save most recent score
         scores.append(score)  # save most recent score
         eps = max(eps_end, eps_decay * eps)  # decrease epsilon
-        print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)), end="")
+        print('\rEpisode {}\tAverage Score: {:.2f}\t Score: {:.2f}'.format(i_episode, np.mean(scores_window), score), end="")
         if i_episode % 100 == 0:
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
         if np.mean(scores_window) >= 13:
@@ -86,7 +86,6 @@ def dqn(n_episodes=2000, max_t=1000, eps_start=0.1, eps_end=0.0001, eps_decay=0.
             torch.save(agent.qnetwork_local.state_dict(), path_to_save_model)
             break
     return scores
-
 
 scores = dqn()
 
