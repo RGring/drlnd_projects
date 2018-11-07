@@ -8,10 +8,9 @@ import random
 
 seed = 1
 
-path_to_env = "//home/ronja/MiR/Udacity/deep-reinforcement-learning/p3_collab-compet/Tennis_Linux/Tennis.x86_64"
+path_to_env = "../../envs/p3_collab-compet/Tennis_Linux/Tennis.x86_64"
 path_to_save_model = "../saved_models"
 
-port_save = random.randint(0,100)
 env = UnityEnvironment(file_name=path_to_env,no_graphics=True)
 
 # get the default brain
@@ -65,11 +64,11 @@ print('The state for the first agent looks like:', states[0])
 ######## AGENT TRAINING #########
 #################################
 agent = Agent(state_size=state_size, action_size=action_size, num_agents=num_agents, seed=seed)
-def ddpg(n_episodes=800, max_t=1000):
+def ddpg(n_episodes=2000, max_t=1000):
     scores_deque = deque(maxlen=100)
     scores = []
     for i_episode in range(1, n_episodes+1):
-        env_info = env.reset(train_mode=True)[brain_name]
+        env_info = env.reset(train_mode=False)[brain_name]
         states = env_info.vector_observations  # get the current state
         agent.reset()
         score = np.zeros(num_agents)
@@ -85,12 +84,12 @@ def ddpg(n_episodes=800, max_t=1000):
             states = next_states
             if np.any(dones):
                 break
-        scores_deque.append(np.mean(score))
-        scores.append(np.mean(score))
+        scores_deque.append(np.amax(score))
+        scores.append(np.amax(score))
         print('\rEpisode {}\tAverage Score: {:.2f}\tScore: {:.2f}'.format(i_episode, np.mean(scores_deque), np.mean(score)), end="")
         if i_episode % 100 == 0:
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_deque)))
-        if (np.mean(scores_deque) > 30):
+        if (np.mean(scores_deque) > 0.5):
             torch.save(agent.actor_local.state_dict(), '%s/actor1_%d.pth' % (path_to_save_model, seed))
             torch.save(agent.critic_local.state_dict(), '%s/critic1_%d.pth' % (path_to_save_model, seed))
             break

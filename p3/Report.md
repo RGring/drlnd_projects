@@ -1,5 +1,10 @@
-# Project 1 - collecting tasty bananas
-To solve the learning task the DDPG-algorithm [1] is applied here. 
+# Project 3 - Playing Tennis
+The task is a cooperative task because the aim is to keep
+the ball for a long time in the air to reach the requested average reward of
+0.5. So it is suitable to apply the same agent to both tennis players.
+That's why I used a simple DDPG [1] agent to solve the task. 
+The agent learns from the experiences from the replay buffer. 
+The replay buffer collects the experiences of both agents.
 
 
 ## Hyperparameters
@@ -9,7 +14,7 @@ The following hyperparameters are used.
 BUFFER_SIZE = int(1e5)  
 BATCH_SIZE = 128  
 GAMMA = 0.99  
-TAU = 0.001  
+TAU = 0.2  
 LR_ACTOR = 0.0001  
 LR_CRITIC = 0.001  
 WEIGHT_DECAY = 0.0  
@@ -34,22 +39,16 @@ Output Layer: 4 Neurons, Tanh
 ```
 
 ## Results
-  * Environment solved in ~150 episodes
+  * Environment solved in 989 episodes
   ![rewards](figures/reward_plot.png)
   
 ## Future Work
-I didn't get my implementation with an actual seed running. I tried to set a seed everywhere
-possible (simulation env, torch, ...), but still I got different results, when I trained
-the agent several times with the same hyperparamters. I had difficulties with
-the tuning process and it felt more like luck of getting a good initial state. I.e. Training
-with the same hyperparameters failed in one run and succeeded in the next. 
-So this would be a first improvement to really be able to tune those parameters systematically.
-
-Further more I'd like to apply PPO [2] and compare the results and the difficulty of 
-hyperparameter tuning to DDPG [1].
+As a variant a real multi-agent approach like MADDPG [2] could be applied.
+I doesn't seem to be necessary and might be overkill. It would be interesting 
+to compare the results and learning speed and see if [2] brings any benefit.
 
   
   
 ## References
   *  [1] DDPG-algorithm: CONTINUOUS CONTROL WITH DEEP REINFORCEMENT LEARNING, Lillicrap et. al., 2016
-  *  [2] PPO: Proximal Policy Optimization Algorithms, Schulman et. al., 2017
+  *  [2] Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments, Lowe et. al, 2018
