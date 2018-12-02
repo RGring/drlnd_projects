@@ -36,11 +36,6 @@ For training an agent start train_agent.py with python3 as interpreter. Please s
   * path_to_save_model: The path, where the trained network model should be saved to.
   * Feel free to modify any hyperparamters.
 
-## How to apply a trained agent
-For running an already trained agent start the run_agent.py script with python3 interpreter. Pleases set the following variables in the script.
-  * path_to_env: The path to the simulation environment.
-  * path_to_save_agent: The path, where the network parameter should be loaded from.
-
 ## References
   * Code structure is from the Udacity lesson coding exercise DDPG BiPedal
   * [1] CONTINUOUS CONTROL WITH DEEP REINFORCEMENT LEARNING, Lillicrap et. al.m 2016
